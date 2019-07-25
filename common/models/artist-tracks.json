@@ -1,0 +1,27 @@
+{
+  "name": "Artist-Tracks",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "artistid": {
+      "type": "number",
+      "required": true
+    },
+    "trackid": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ArtistsByTracks": {
+      "type": "hasMany",
+      "model": "Track",
+      "foreignKey": "trackid"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

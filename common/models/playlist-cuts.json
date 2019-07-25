@@ -1,0 +1,35 @@
+{
+  "name": "Playlist-Cuts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "cutid": {
+      "type": "number"
+    },
+    "playlistid": {
+      "type": "number"
+    },
+    "order": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Playlists": {
+      "type": "belongsTo",
+      "model": "Playlist",
+      "foreignKey": ""
+    },
+    "Cuts-on-Playlists": {
+      "type": "belongsTo",
+      "model": "Cut",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

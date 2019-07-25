@@ -1,0 +1,28 @@
+{
+  "name": "Playlist",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "userid": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "PlaylistCuts": {
+      "type": "hasMany",
+      "model": "Cut",
+      "foreignKey": "playlistid",
+      "through": "Playlist-Cuts"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

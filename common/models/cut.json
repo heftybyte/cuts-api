@@ -1,0 +1,54 @@
+{
+  "name": "Cut",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "start": {
+      "type": "number",
+      "required": true
+    },
+    "end": {
+      "type": "number",
+      "required": true
+    },
+    "created": {
+      "type": "date",
+      "required": true
+    },
+    "userid": {
+      "type": "number"
+    },
+    "trackid": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "TrackCuts": {
+      "type": "belongsTo",
+      "model": "Track",
+      "foreignKey": "trackid"
+    },
+    "CutsOnPlaylists": {
+      "type": "hasMany",
+      "model": "Playlist",
+      "foreignKey": "cutid",
+      "through": "Playlist-Cuts"
+    },
+    "UserCut": {
+      "type": "hasOne",
+      "model": "User-cut",
+      "foreignKey": "userid"
+    },
+    "Snippet": {
+      "type": "hasOne",
+      "model": "Track",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
