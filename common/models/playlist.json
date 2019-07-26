@@ -10,7 +10,7 @@
       "type": "string",
       "required": true
     },
-    "userid": {
+    "accountid": {
       "type": "number"
     }
   },

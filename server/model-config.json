@@ -43,11 +43,8 @@
     "dataSource": "db",
     "public": true
   },
-  "Artist-Tracks": {
-    "dataSource": "db",
-    "public": true
-  },
-  "Playlist-Cuts": {
+
+  "PlaylistCuts": {
     "dataSource": "db",
     "public": true
   },
@@ -55,7 +52,7 @@
     "dataSource": "db",
     "public": true
   },
-  "User-cut": {
+  "Account": {
     "dataSource": "db",
     "public": true
   }

@@ -22,7 +22,7 @@
   "relations": {
     "TracksByArtists": {
       "type": "belongsTo",
-      "model": "Artist-Tracks",
+      "model": "ArtistTrack",
       "foreignKey": "artistid"
     }
   },

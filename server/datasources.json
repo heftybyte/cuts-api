@@ -1,7 +1,12 @@
 {
   "db": {
     "name": "db",
-    "connector": "memory",
-    "file": "db.json"
+    "host": "cutsDBhost",
+    "port": 5432,
+    "url": "postgresql://postgres:postgres@localhost/cuts",
+    "database": "cuts",
+    "password": "admin",
+    "user": "admin",
+    "connector": "postgresql"
   }
 }

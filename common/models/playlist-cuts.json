@@ -1,5 +1,5 @@
 {
-  "name": "Playlist-Cuts",
+  "name": "PlaylistCuts",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

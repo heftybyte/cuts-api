@@ -18,7 +18,7 @@
       "type": "date",
       "required": true
     },
-    "userid": {
+    "accountid": {
       "type": "number"
     },
     "trackid": {
@@ -38,10 +38,10 @@
       "foreignKey": "cutid",
       "through": "Playlist-Cuts"
     },
-    "UserCut": {
+    "Account": {
       "type": "hasOne",
-      "model": "User-cut",
-      "foreignKey": "userid"
+      "model": "Account",
+      "foreignKey": "accountid"
     },
     "Snippet": {
       "type": "hasOne",

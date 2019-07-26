@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS cuts;
+CREATE DATABASE cuts;
+
+\c cuts;
