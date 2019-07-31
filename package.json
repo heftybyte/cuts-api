@@ -8,19 +8,25 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "nodemon -e js,json .",
+    "debug": "node debug .",
     "start": "node .",
     "posttest": "npm run lint && npm audit"
   },
   "dependencies": {
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "express-flash": "git://github.com/RGBboy/express-flash.git",
+    "express-session": "^1.16.2",
     "helmet": "^3.10.0",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
     "loopback-cli": "^5.0.3",
     "loopback-component-explorer": "^6.2.0",
+    "loopback-component-passport": "^3.11.0",
     "loopback-connector-postgresql": "^3.7.0",
+    "loopback-connector-rest": "^3.4.2",
     "nodemon": "^1.19.1",
+    "passport-spotify": "^1.0.1",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },

@@ -4,7 +4,8 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
-      "./models"
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
     ],
     "mixins": [
       "loopback/common/mixins",
@@ -12,6 +13,18 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "ApplicationCredential": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserCredential": {
+    "dataSource": "db",
+    "public": true
+  },
+  "UserIdentity": {
+    "dataSource": "db",
+    "public": true
   },
   "User": {
     "dataSource": "db"
@@ -43,7 +56,6 @@
     "dataSource": "db",
     "public": true
   },
-
   "PlaylistCuts": {
     "dataSource": "db",
     "public": true
@@ -54,6 +66,10 @@
   },
   "Account": {
     "dataSource": "db",
+    "public": true
+  },
+  "Spotify": {
+    "dataSource": "spotify",
     "public": true
   }
 }

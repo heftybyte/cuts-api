@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Web Playback SDK Quick Start Tutorial</title>
+</head>
+<body>
+  <h1>Spotify Web Playback SDK Quick Start Tutorial</h1>
+  <h2>Open your console log: <code>View > Developer > JavaScript Console</code></h2>
+
+  <div class="container">
+    <h1>Search for an Artist</h1>
+    <p>Type an artist name and click on "Search". Then, click on any album from the results to play 30 seconds of its first track.</p>
+    <form id="search-form">
+        <input type="text" id="query" value="" class="form-control" placeholder="Type an Artist Name"/>
+        <input type="submit" id="search" class="btn btn-primary" value="Search" />
+    </form>
+    <div id="results"></div>
+  </div>
+
+  <div id="categoryList">
+    <h1>List of Categories</h1>
+
+    <div id="displayCategories"></div>
+  </div>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      const token = 'BQBqptCnWyEZHDCeYfI1n78Qhn6MZLydYdTMIDEw3yt3ZjLn2ah-bkvfon8upT0ACAwCZ1sRbrvvhv2Fk4y-4vGY5w62klOfWdk0Pun-7WXIOIhlSZAbX2xYWFiiKgL2yhCaJy2AS1ZPL3TDsYW_m_tkr-LlHePEirJU2w7tSJrSZKGwXOk9xK6cu8iSDnLBvmTGHilnhknqEINu8VfV';
+      // const categoryResponseContainer = document.getElementById("displayCategories")
+      
+      const player = new Spotify.Player({
+        name: 'Cuts',
+        getOAuthToken: cb => { cb(token); }
+      });
+
+      // Error handling
+      player.addListener('initialization_error', ({ message }) => { console.error(message); });
+      player.addListener('authentication_error', ({ message }) => { console.error(message); });
+      player.addListener('account_error', ({ message }) => { console.error(message); });
+      player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+      // Playback status updates
+      player.addListener('player_state_changed', state => { console.log(state); });
+
+      // Ready
+      player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+      });
+
+      // Not Ready
+      player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+      });
+
+      // Connect to the player!
+      player.connect();
+      window.player = player
+    };
+  </script>
+  <script>
+      const token = 'BQCe0FRDPsGOIfVinZDLqz95CY__WDjJKF0Ja-wnEp_E25kCmeeqfnUsFfO0nwiYMpOCsjH_nLqB52xcFw5VQSD-UV3_veuk1bC2b47BI6iFwU5fT__d4o6bnKnxHfZ9y7gi7ZunWXFS2QGKgsNV_jFvbK6vVLeyGAkXZOCZSTTAAf_V52n2w1YhMpOw9iUXGrAHZ2oxUPnjIUyQqg5d';
+      const categoryResponseContainer = document.getElementById("displayCategories")
+      const searchForm = document.getElementById("search-form")
+      const query = document.getElementById("query")
+
+      searchForm.addEventListener("submit", (q)=>{
+        fetch(`http://localhost:3000/api/Spotify/search?q=${query.value}&type=track`, {
+            method: 'GET'
+        }).then(res =>{
+          // console.log('category res: ',res) 
+          return res.json(); })
+        .then(resjson => {
+          console.log('category res: ',resjson) 
+          
+          // console.log('stack: ',resjson.error.stack) 
+        })
+       
+        
+      } )
+
+      function getMusicCategories(accessToken) {
+    
+        return fetch('https://api.spotify.com/v1/browse/categories', {
+            headers: {
+               'Authorization': 'Bearer ' + accessToken
+            },
+            method: 'GET'
+        })
+        .then(res =>{
+          // console.log('category res: ',res) 
+          return res.json(); })
+        .then(resjson => {
+          // console.log('category res: ',resjson) 
+          return categoryResponseContainer.innerHTML = `<ul> ${resjson.categories.items.map(cate =>{  return `<li>
+            <h1> ${cate.name}</h1> <img src=${cate.icons[0].url} alt="Spotify ${cate.id}"></li>` }).join('') }</ul>`;
+        });
+      }
+      getMusicCategories(token);
+     
+  </script>
+
+</body>
+</html>

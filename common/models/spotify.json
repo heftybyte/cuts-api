@@ -1,0 +1,11 @@
+{
+    "name": "Spotify",
+    "plural": "Spotify",
+    "base": "Model",
+    "idInjection": true,
+    "properties": {},
+    "validations": [],
+    "relations": {},
+    "acls": [],
+    "methods": []
+  }

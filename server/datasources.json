@@ -1,12 +1,36 @@
 {
   "db": {
-    "name": "db",
     "host": "cutsDBhost",
     "port": 5432,
     "url": "postgresql://postgres:postgres@localhost/cuts",
     "database": "cuts",
     "password": "admin",
+    "name": "db",
     "user": "admin",
     "connector": "postgresql"
+  },
+  "spotify": {
+    "name": "spotify", 
+    "crud": false,
+    "connector": "rest",
+    "operations": [{
+      "template": {
+        "method": "GET",
+        "url": "https://api.spotify.com/v1/search",
+        "headers": {
+          "Authorization": "Bearer BQCe0FRDPsGOIfVinZDLqz95CY__WDjJKF0Ja-wnEp_E25kCmeeqfnUsFfO0nwiYMpOCsjH_nLqB52xcFw5VQSD-UV3_veuk1bC2b47BI6iFwU5fT__d4o6bnKnxHfZ9y7gi7ZunWXFS2QGKgsNV_jFvbK6vVLeyGAkXZOCZSTTAAf_V52n2w1YhMpOw9iUXGrAHZ2oxUPnjIUyQqg5d"
+        },
+        "query": {
+          "q": "{q}",
+          "type": "{type=track}"
+        }
+      },
+      "functions": {
+        "search": ["q", "type"]
+      }
+    }]
+
+   
+    
   }
 }
