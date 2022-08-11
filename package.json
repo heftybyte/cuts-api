@@ -23,7 +23,7 @@
     "loopback-cli": "^5.0.3",
     "loopback-component-explorer": "^6.2.0",
     "loopback-component-passport": "^3.11.0",
-    "loopback-connector-postgresql": "^3.7.0",
+    "loopback-connector-postgresql": "^5.5.1",
     "loopback-connector-rest": "^3.4.2",
     "nodemon": "^1.19.1",
     "passport-spotify": "^1.0.1",
